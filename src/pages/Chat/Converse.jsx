@@ -49,9 +49,9 @@ function Converse() {
     e.preventDefault();
     setloading(true);
     console.log(searchQuery);
-    // 
+    //
     axios
-      .post(process.env.REACT_APP_BACKEND+"query_loans", {
+      .post(process.env.REACT_APP_BACKEND + "query_loans", {
         query: searchQuery,
       })
       .then((res) => {
@@ -162,41 +162,19 @@ function Converse() {
 
       {/* placeholder examples */}
       {messages.length < 1 && (
-        <div className="flex gap-8 w-3/4 h-3/4">
-          <div className="flex flex-col gap-4 text-gray-400 items-center w-1/3 h-full">
-            <h2 className="text-xl flex items-center gap-2">As an Employee</h2>
+        <div className="flex gap-8 w-3/4 h-3/4 ">
+          <div className="flex flex-col gap-4 text-gray-400 items-center w-1/3 mx-auto">
+            <h2 className="text-xl flex items-center gap-2">
+              Executive Decision Maker
+            </h2>
             <div className="bg-midnight p-4 rounded-md w-full flex-wrap text-center">
-              How I am doing compared to my colleagues in the cluster ?
+              What is the percentage of loan takers with master's degree?
             </div>
             <div className="bg-midnight p-4 rounded-md w-full flex-wrap text-center">
-              Can you give me the top 5 employees in my branch?
+              What is the percentage of loan takers with diffrent educations?
             </div>
             <div className="bg-midnight p-4 rounded-md w-full flex-wrap text-center">
-              Which branches from my cluster is doing bad in RFR KRA?
-            </div>
-          </div>
-          <div className="flex flex-col gap-4 text-gray-400 items-center w-1/3">
-            <h2 className="text-xl flex items-center gap-2">Branch Head</h2>
-            <div className="bg-midnight p-4 rounded-md w-full flex-wrap text-center">
-              Can you give me the top 5 employees in my branch?
-            </div>
-            <div className="bg-midnight p-4 rounded-md w-full flex-wrap text-center">
-              Advanced Ml algorithm to match you with experienced professionals
-            </div>
-            <div className="bg-midnight p-4 rounded-md w-full flex-wrap text-center">
-              Efficient upskilling with relevant multi language course content
-            </div>
-          </div>
-          <div className="flex flex-col gap-4 text-gray-400 items-center w-1/3">
-            <h2 className="text-xl flex items-center gap-2">Cluster Head</h2>
-            <div className="bg-midnight p-4 rounded-md w-full flex-wrap text-center">
-              Which branches from my cluster is doing bad in RFR KRA?
-            </div>
-            <div className="bg-midnight p-4 rounded-md w-full flex-wrap text-center">
-              Cannot chat with mentors (Yet!)
-            </div>
-            <div className="bg-midnight p-4 rounded-md w-full flex-wrap text-center">
-              May occassionaly give biased results
+              How many defaulters are there?
             </div>
           </div>
         </div>
