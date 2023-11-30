@@ -12,6 +12,7 @@ const AddCustomer = () => {
     Income: 0,
     LoanAmount: 0,
     CreditScore: 0,
+    NumCreditLines: 0,
     MonthsEmployed: 0,
     InterestRate: 0.0,
     LoanTerm: 0,

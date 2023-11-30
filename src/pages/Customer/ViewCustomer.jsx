@@ -3,6 +3,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 
 const ViewCustomer = () => {
   // get the load id from the url
@@ -12,6 +13,9 @@ const ViewCustomer = () => {
 
   const [defaulter, setDefaulter] = useState(null);
   const [defaulterLoading, setDefaulterLoading] = useState(false);
+
+  const [insights, setInsights] = useState(null);
+  const [insightsLoading, setInsightsLoading] = useState(false);
 
   // Function to fetch customeromers data from the API
   const getCustomer = () => {
@@ -84,6 +88,41 @@ const ViewCustomer = () => {
         setDefaulterLoading(false);
       });
   };
+
+  // function to get insights about the customer
+  const onGetInsights = () => {
+    setInsightsLoading(true);
+
+    axios
+      .post(process.env.REACT_APP_BACKEND + "get_insigths_user/", {
+        LoanID: customer?.LoanID,
+        Age: customer?.Age,
+        Income: customer?.Income,
+        LoanAmount: customer?.LoanAmount,
+        CreditScore: customer?.CreditScore,
+        MonthsEmployed: customer?.MonthsEmployed,
+        NumCreditLines: customer?.NumCreditLines,
+        InterestRate: customer?.InterestRate,
+        LoanTerm: customer?.LoanTerm,
+        DTIRatio: customer?.DTIRatio,
+        Education: customer?.Education,
+        EmploymentType: customer?.EmploymentType,
+        MaritalStatus: customer?.MaritalStatus,
+        HasMortgage: customer?.HasMortgage,
+        HasDependents: customer?.HasDependents,
+        LoanPurpose: customer?.LoanPurpose,
+        HasCoSigner: customer?.HasCoSigner,
+      })
+      .then((res) => {
+        setInsights(res.data);
+        console.log(res.data);
+        setInsightsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setInsightsLoading(false);
+      });
+  };
   return (
     <div className="p-8 bg-white shadow mt-16">
       <div className="grid grid-cols-1 md:grid-cols-3">
@@ -132,7 +171,7 @@ const ViewCustomer = () => {
               width="30px"
             />
           )}
-          {defaulterLoading && (
+          {defaulter && (
             <p className="text-gray-700 font-bold text-xl">{defaulter}</p>
           )}
         </div>
@@ -140,17 +179,17 @@ const ViewCustomer = () => {
 
       <div class="mt-12 text-center border-b pb-12 flex flex-col items-center justify-center">
         <button
-          //   onClick={downloadPdf}
+          onClick={onGetInsights}
           className="flex w-56 mb-8 items-center justify-center gap-4 font-bold text-xl rounded bg-green-600 px-8 py-3 text-white focus:outline-none focus:ring active:bg-green-500"
         >
           <span>Get Insights using LLM</span>
 
-          {/* {loading && (
-                <img
-                  src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
-                  width="30px"
-                />
-              )} */}
+          {insightsLoading && (
+            <img
+              src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
+              width="30px"
+            />
+          )}
         </button>
 
         <div className="grid grid-cols-4 gap-8">
@@ -258,6 +297,17 @@ const ViewCustomer = () => {
               Has CoSigner
             </p>
           </div>
+        </div>
+
+        <div className="mt-12 ">
+          <h1 className="text-2xl font-bold text-black">
+            Insights from the LLM about the customer
+          </h1>
+          {insights &&
+            insights
+              .split("\n")
+              .map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+          {/* {insights && <ReactMarkdown>{insights}</ReactMarkdown>} */}
         </div>
       </div>
     </div>
