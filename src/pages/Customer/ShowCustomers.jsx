@@ -35,21 +35,27 @@ const ShowCustomers = () => {
             key={customer.LoanID}
             className="border border-gray-300 p-4 rounded-md"
           >
-            <p className="text-lg font-semibold mb-2">{customer.Name}</p>
+            <p className="text-lg font-semibold mb-2 ">{customer.Name}</p>
             <p>
-              <span className="font-bold">LoanID:</span> {customer.LoanID}
+              <span className="font-bold text-blue-700">LoanID:</span>{" "}
+              {customer.LoanID}
             </p>
             <p>
-              <span className="font-bold">LoanAmount:</span>{" "}
+              <span className="font-bold text-blue-700">LoanAmount:</span>{" "}
               {customer.LoanAmount}
             </p>
             <p>
-              <span className="font-bold">LoanPurpose:</span>{" "}
+              <span className="font-bold text-blue-700 mb-4">LoanPurpose:</span>{" "}
               {customer.LoanPurpose}
             </p>
-            <Link className="bg-prim rounded-md px-4 py-3 font-bold text-lg hover:bg-accent w-full" to={`/Customer/Show/`+customer.LoanID}>
-              View
-            </Link>
+            <div className="mt-6 w-full">
+              <Link
+                className="bg-primHover rounded-md px-4 py-3 font-bold text-lg hover:bg-accent"
+                to={`/Customer/Show/` + customer.LoanID}
+              >
+                View Customer
+              </Link>
+            </div>
           </div>
         ))}
       </div>
