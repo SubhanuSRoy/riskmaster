@@ -5,7 +5,7 @@ import SidebarLinkGroup from "./SidebarLinkGroup";
 
 import { FiUsers } from "react-icons/fi";
 import { TbTargetArrow } from "react-icons/tb";
-import { AiOutlineTrophy } from "react-icons/ai";
+import { AiOutlineFileImage, AiOutlineTrophy } from "react-icons/ai";
 import { BsChatLeftText } from "react-icons/bs";
 import { VscGraph } from "react-icons/vsc";
 
@@ -101,7 +101,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           <div>
             <ul className="mb-6 flex flex-col gap-1.5">
               {/* <!-- Menu Item Dashboard --> */}
-              
               <li>
                 <NavLink
                   to="/chat/Loan"
@@ -113,9 +112,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   <AiOutlineTrophy className="w-5 h-5" />
                   Loan Chat
                 </NavLink>
+              </li>{" "}
+              <li>
+                <NavLink
+                  to="/chat/analyse"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-semibold text-gray-50 duration-300 ease-in-out hover:bg-primHover dark:hover:bg-meta-4 ${
+                    pathname.includes("/chat/analyse") &&
+                    "bg-primHover dark:bg-meta-4"
+                  }`}
+                >
+                  <AiOutlineFileImage className="w-5 h-5" />
+                  Analyse Images
+                </NavLink>  
               </li>
               {/* <!-- Menu Item Dashboard --> */}
-
               {/* <!-- Menu Item Customers --> */}
               <SidebarLinkGroup
                 activeCondition={
@@ -127,7 +137,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     <React.Fragment>
                       <NavLink
                         to="#"
-                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-semibold text-gray-50 duration-300 ease-in-out hover:bg-primHover dark:hover:bg-meta-4 ${
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-semibold text-gray-200 duration-300 ease-in-out hover:bg-primHover dark:hover:bg-meta-4 ${
                           (pathname === "/Customer" ||
                             pathname.includes("emp")) &&
                           "bg-primHover dark:bg-meta-4"
@@ -170,8 +180,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                             <NavLink
                               to="/Customer/addCustomer"
                               className={({ isActive }) =>
-                                "group relative flex items-center gap-2.5 rounded-md px-4 font-semibold text-bodydark2 duration-300 ease-in-out hover:text-white " +
-                                (isActive && "!text-white")
+                                "group relative flex items-center gap-2.5 rounded-md px-4 font-semibold text-gray-200 duration-300 ease-in-out hover:text-white " +
+                                (isActive && "!text-blue-800")
                               }
                             >
                               Add Customer
@@ -181,14 +191,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                             <NavLink
                               to="/Customer/Show"
                               className={({ isActive }) =>
-                                "group relative flex items-center gap-2.5 rounded-md px-4 font-semibold text-bodydark2 duration-300 ease-in-out hover:text-white " +
-                                (isActive && "!text-white")
+                                "group relative flex items-center gap-2.5 rounded-md px-4 font-semibold text-gray-200 duration-300 ease-in-out hover:text-white " +
+                                (isActive && "!text-blue-800")
                               }
                             >
                               Show Customers
                             </NavLink>
-                          </li> 
-                          
+                          </li>
                         </ul>
                       </div>
                       {/* <!-- Dropdown Menu End --> */}
@@ -196,7 +205,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   );
                 }}
               </SidebarLinkGroup>
-
               <SidebarLinkGroup
                 activeCondition={
                   pathname === "/Loans" || pathname.includes("Loans")
@@ -208,7 +216,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       <NavLink
                         to="#"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-semibold text-gray-50 duration-300 ease-in-out hover:bg-primHover dark:hover:bg-meta-4 ${
-                          (pathname === "/Loans" || pathname.includes("Loans")) &&
+                          (pathname === "/Loans" ||
+                            pathname.includes("Loans")) &&
                           "bg-primHover dark:bg-meta-4"
                         }`}
                         onClick={(e) => {
@@ -249,8 +258,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                             <NavLink
                               to="/Loans/apply"
                               className={({ isActive }) =>
-                                "group relative flex items-center gap-2.5 rounded-md px-4 font-semibold text-bodydark2 duration-300 ease-in-out hover:text-white " +
-                                (isActive && "!text-white")
+                                "group relative flex items-center gap-2.5 rounded-md px-4 font-semibold text-gray-200 duration-300 ease-in-out hover:text-white " +
+                                (isActive && "!text-blue-800")
                               }
                             >
                               Apply Loan
@@ -260,8 +269,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                             <NavLink
                               to="/Loans/view"
                               className={({ isActive }) =>
-                                "group relative flex items-center gap-2.5 rounded-md px-4 font-semibold text-bodydark2 duration-300 ease-in-out hover:text-white " +
-                                (isActive && "!text-white")
+                                "group relative flex items-center gap-2.5 rounded-md px-4 font-semibold text-gray-200 duration-300 ease-in-out hover:text-white " +
+                                (isActive && "!text-blue-800")
                               }
                             >
                               View Loans
@@ -274,7 +283,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   );
                 }}
               </SidebarLinkGroup>
-
               {/* <!-- Menu Item Settings --> */}
               <li>
                 <NavLink

@@ -7,6 +7,7 @@ import SpeechRecognition, {
 // icons
 import { BiUserCircle } from "react-icons/bi";
 import { useSelector } from "react-redux";
+import { TypeAnimation } from "react-type-animation";
 function Converse() {
   const { transcript } = useSpeechRecognition();
 
@@ -148,7 +149,11 @@ function Converse() {
               <div class="flex w-full mt-2 space-x-3 ml-auto justify-end">
                 <div>
                   <div class="bg-gray-50 text-gray-800 p-3 rounded-md">
-                    <pre class="text-sm whitespace-pre-wrap">{m.ans}</pre>
+                    <TypeAnimation
+                      speed={75}
+                      sequence={[m.ans]}
+                      className="text-sm whitespace-pre-wrap"
+                    />
                   </div>
                 </div>
                 <div class="flex-shrink-0 h-10 w-10  bg-gray-50">

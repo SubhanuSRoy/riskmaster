@@ -7,6 +7,7 @@ const AddCustomer = lazy(() => import("../pages/Customer/AddCustomer"));
 const RiskEval = lazy(() => import("../pages/Customer/RiskEval"));
 const ShowCustomers = lazy(() => import("../pages/Customer/ShowCustomers"));
 const ViewCustomer = lazy(() => import("../pages/Customer/ViewCustomer"));
+const ImageAnalyzer = lazy(() => import("../pages/Chat/ImageAnalyzer"));
 
 
 const coreRoutes = [
@@ -15,6 +16,10 @@ const coreRoutes = [
       path: "/chat/Loan",
       title: "Chat with LLM",
       component: Converse,
+    },{
+      path: "/chat/analyse",
+      title: "Chat with image",
+      component: ImageAnalyzer,
     },
     {
       path: "/Loans/apply",
