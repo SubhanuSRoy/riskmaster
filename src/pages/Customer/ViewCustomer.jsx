@@ -3,7 +3,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
+import Markdown from 'react-markdown'
 
 const ViewCustomer = () => {
   // get the load id from the url
@@ -303,11 +303,11 @@ const ViewCustomer = () => {
           <h1 className="text-2xl font-bold text-black">
             Insights from the LLM about the customer
           </h1>
-          {insights &&
+          {/* {insights &&
             insights
               .split("\n")
-              .map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-          {/* {insights && <ReactMarkdown>{insights}</ReactMarkdown>} */}
+              .map((paragraph, index) => <p key={index}>{paragraph}</p>)} */}
+          {insights && <Markdown>{insights}</Markdown>}
         </div>
       </div>
     </div>
